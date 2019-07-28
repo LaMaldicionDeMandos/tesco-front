@@ -3,10 +3,17 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AccountsComponent } from './accounts/accounts.component';
+
+import { registerLocaleData } from '@angular/common';
+import localeAr from '@angular/common/locales/es-AR';
+
+registerLocaleData(localeAr, 'es-AR');
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AccountsComponent
   ],
   imports: [
     BrowserModule,
@@ -15,4 +22,5 @@ import { AppComponent } from './app.component';
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

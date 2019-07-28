@@ -1,0 +1,22 @@
+<div>
+  <h1>Lista de cuentas</h1>
+  <br/>
+  <div class="row justify-content-md-center">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Número de Cuenta</th>
+        <th>Moneda</th>
+        <th>Saldo</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let account of accounts">
+        <td><a href="#">{{account.accountNumber}}</a></td>
+        <td><label>{{account.currency}}</label></td>
+        <td><label>{{account.balance | currency: 'ARS':'$':'1.2-2':'es-AR'}}</label></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

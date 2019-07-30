@@ -16,6 +16,7 @@
         <td><a href="#">{{account.accountNumber}}</a></td>
         <td><label>{{account.currency}}</label></td>
         <td><label>{{account.balance | currency: 'ARS':'$':'1.2-2':'es-AR'}}</label></td>
+        <td><a href="#" color="red" (click)="deleteAccount(account)">Eliminar</a></td>
       </tr>
       </tbody>
     </table>

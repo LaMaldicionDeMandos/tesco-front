@@ -62,7 +62,7 @@ export class AccountsComponent implements OnInit {
   deleteAccount(account) {
     this.apiService.deleteAccount(account).subscribe(() => this.accounts.splice(this.accounts.indexOf(account, 0), 1),
       (error) => {
-        let errorMessage:string;
+        let errorMessage: string;
         if (error.status === 404) {
           errorMessage = `Error: No se encontró la cuenta número ${account.id}`;
         } else if (error.status === 400) {

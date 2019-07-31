@@ -1,6 +1,7 @@
 import {Observable} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import {share, tap} from "rxjs/operators";
 
 const BASE_URL = environment.base_url;
 const HTTP_OPTIONS = {
@@ -14,14 +15,14 @@ export class ApiService {
   private accountsCache = {};
 
   constructor(private http: HttpClient) {}
-  public findAccounts(): Observable<any[]> {
-    let result:Observable<any> = this.http.get(BASE_URL, HTTP_OPTIONS);
-    result.subscribe((accounts) => accounts.forEach((account) => this.accountsCache[account.id] = account));
-    return result;
+  public findAccounts(): Observable<any> {
+    return this.http.get(BASE_URL, HTTP_OPTIONS)
+      .pipe(tap((accounts) => accounts.forEach((account) => this.accountsCache[account.id] = account)));
   }
 
   public newAccount(account): Observable<any> {
-    return this.http.post(BASE_URL, account, HTTP_OPTIONS);
+    return this.http.post(BASE_URL, account, HTTP_OPTIONS)
+      .pipe(tap((account) => this.accountsCache[account.id] = account));
   }
 
   public deleteAccount(account): Observable<any> {

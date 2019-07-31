@@ -1,8 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastService } from '../services/toast-service';
 import {ApiService} from '../services/ApiService';
-import {stringify} from 'querystring';
 
 @Component({
   selector: 'app-account-modal-content',
@@ -65,8 +64,8 @@ export class AccountsComponent implements OnInit {
         let errorMessage: string;
         if (error.status === 404) {
           errorMessage = `Error: No se encontró la cuenta número ${account.id}`;
-        } else if (error.status === 400) {
-          errorMessage = `Error: La cuenta número ${account.id}, tiene movimientos, no puede ser eliminada.`;
+        } else if (error.status === 304) {
+          errorMessage = `Error: La cuenta número ${account.accountNumber} ya tiene movimientos, no puede ser eliminada.`;
         } else {
           errorMessage = 'Error: Algo pasó y no se pudo eliminar la cuenta';
         }

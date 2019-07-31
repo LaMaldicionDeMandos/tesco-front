@@ -12,6 +12,7 @@ import localeAr from '@angular/common/locales/es-AR';
 import {ToastsContainer} from "./services/toaster.component";
 import {ToastService} from "./services/toast-service";
 import {ApiService} from "./services/ApiService";
+import {AccountComponent, OrderModalContentComponent} from './account/account.component';
 
 registerLocaleData(localeAr, 'es-AR');
 
@@ -19,8 +20,10 @@ registerLocaleData(localeAr, 'es-AR');
   declarations: [
     AppComponent,
     AccountModalContentComponent,
+    OrderModalContentComponent,
     AccountsComponent,
-    ToastsContainer
+    ToastsContainer,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +34,6 @@ registerLocaleData(localeAr, 'es-AR');
   exports: [AccountModalContentComponent],
   providers: [ToastService, ApiService],
   bootstrap: [AppComponent],
-  entryComponents: [AccountModalContentComponent]
+  entryComponents: [AccountModalContentComponent, OrderModalContentComponent]
 })
 export class AppModule { }
